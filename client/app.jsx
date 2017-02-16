@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 
+import Leaderboard from './leaderboard.jsx'
+
 const app = () => (
   <div>
-    <h2>This works</h2>
+    <Leaderboard />
   </div>
 );
 
