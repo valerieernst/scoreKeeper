@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-
+import axios from 'axios';
 import Team from './team.jsx';
 
 const dummyData = [
@@ -24,12 +24,25 @@ const dummyData = [
 export default class Leaderboard extends Component {
   constructor(props) {
     super(props);
+
+    this.getScores = this.getScores.bind(this);
+
     this.state = {
       teamData: dummyData
     };
   }
 
-
+  getScores () {
+    axious.get('/scores')
+    .then((data) => {
+      this.setState({
+        teamData: data
+      });
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+  }
 
 
   render () {

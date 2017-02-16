@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/valerieernst/scoreKeeper#readme",
   "dependencies": {
+    "axios": "^0.15.3",
     "body-parser": "^1.16.1",
     "express": "^4.14.1",
     "path": "^0.12.7",
