@@ -2,8 +2,9 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const webpack = require('webpack');
-const webpackConfig = require('../webpackConfig.js');
 const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackConfig = require('../webpackConfig.js');
+const handler = require('./handler.js');
 
 //instantiate app using express
 const app = express();
@@ -34,6 +35,8 @@ app.use(bodyParser.json());
 
 //server static files from dist folder
 app.use(express.static(path.join(__dirname, '../dist')));
+
+app.get('/scores', handler.getScore);
 
 //launch app
 app.listen(port, () => console.log('App listening on ', port));
