@@ -28,7 +28,7 @@ app.use(webpackDevMiddleware(compiler, {
 }));
 
 //set port for app
-const port = process.env.port || 3030
+const port = process.env.PORT || 3030
 
 //parse incoming requests
 app.use(bodyParser.json());
