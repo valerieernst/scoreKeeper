@@ -15,4 +15,8 @@ const leaderboard = ({ scoreData }) => {
   )
 }
 
+leaderboard.propTypes = {
+  scoreData: PropTypes.object
+};
+
 export default leaderboard;

@@ -37,7 +37,6 @@ export default class GivePoints extends Component {
   }
 
   givePoints (e) {
-    console.log(this.state)
     e.preventDefault();
     axios.post('/addPoints', {
       user_id: this.state.user,
@@ -72,7 +71,7 @@ export default class GivePoints extends Component {
         </FormGroup>
 
         <FormGroup>
-          <ControlLabel>To</ControlLabel>
+          <ControlLabel>To:</ControlLabel>
           <FormControl 
             id="user" 
             componentClass="select" 
@@ -87,7 +86,7 @@ export default class GivePoints extends Component {
         </FormGroup>
 
         <FormGroup>
-          <ControlLabel>For</ControlLabel>
+          <ControlLabel>For:</ControlLabel>
           <FormControl 
             id="reason" 
             type="text" 
@@ -104,4 +103,5 @@ export default class GivePoints extends Component {
       </div>
     )
   }
+
 }
