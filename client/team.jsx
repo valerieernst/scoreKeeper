@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 const team = ({ teamName, points, place }) => (
   <div className="team">
-    <h2 className="team_title">Team {teamName} has {points} points</h2>
+    <h3 className="team_title">Team {teamName} has {points} points</h3>
   </div>
 );
 

@@ -40,14 +40,16 @@ export default class App extends Component {
     return (
       <div>
         <NavBar />
-        <Row className="main_app">
-          <Col md={7} sm={12}>
-            <Leaderboard scoreData={this.state.scoreData}/>
-          </Col>
-          <Col md={5} sm={11}>
-            <GivePoints onSubmit={this.getScores}/>
-          </Col>
-        </Row>
+        <div className="main_app_container">
+          <Row className="main_app">
+            <Col md={7} sm={12}>
+              <Leaderboard scoreData={this.state.scoreData}/>
+            </Col>
+            <Col md={5} sm={11}>
+              <GivePoints onSubmit={this.getScores}/>
+            </Col>
+          </Row>
+        </div>
       </div>
     )
   }

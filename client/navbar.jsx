@@ -3,7 +3,7 @@ import { Navbar, Nav, NavItem} from 'react-bootstrap';
 
 const navbar = () => {
   return (
-    <Navbar inverse collapseOnSelect>
+    <Navbar inverse>
       <Navbar.Header>
         <Navbar.Brand>
           <a href="#">ScoreKeeper</a>

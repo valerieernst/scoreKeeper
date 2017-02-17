@@ -57,7 +57,8 @@ export default class GivePoints extends Component {
 
   render () {
     return(
-      <div>
+      <div className="give_points">
+        <h3>Has someone earned more points?</h3>
         <form>
         <FormGroup>
           <ControlLabel>Give this many points</ControlLabel>

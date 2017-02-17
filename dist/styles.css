@@ -1,11 +1,37 @@
 body {
-  background-color: #242424;
+  background: url('./assets/people-coffee-tea-meeting.jpg');
+  background-size: cover;
+  max-height: 100vh;
+}
+
+.navbar {
+  background-color: rgba(47,34,24, 1);
+}
+
+.main_app_container {
+  background-color: rgba(47,34,24, 0.85);
+}
+
+.main_app {
+  margin: 10px;
+  border-radius: 5px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .leaderboard {
+  padding: 10px 10px;
   border: 2px solid #FFFFFF;
   border-radius: 5px;
-  margin-top: 30px;
+  color: #25D1C7;
+  margin-top: 20px;
+}
+
+.give_points {
+  border: 2px solid #FFFFFF;
+  border-radius: 5px;
+  padding: 10px 10px;
+  color: #25D1C7;
 }
 
 
@@ -14,8 +40,6 @@ body {
 
 }
 
-.team_title {
+/*.team_title {
   color: #25D1C7;
-}
-
-/* Blue 25D1C7*/
+}*/
