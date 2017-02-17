@@ -1,4 +1,5 @@
 const mysql = require('mysql');
+require('dotenv').config();
 
 const db = mysql.createConnection({
   host: process.env.DBHOST,
@@ -28,11 +29,38 @@ function objectify (array) {
   return resultsObj;
 }
   
-//this will return an array of objects with team and points properties
+//this will return an object with teamName as a key for a points property for every team in the database
 module.exports.getScore = function(req, res) {
   getAllTeamScores()
   .then((teams) => {
     let scoreObj = objectify(teams);
     res.send(scoreObj);
+  })
+}
+
+module.exports.addPoints = function (req, res) {
+  console.log(`INSERT INTO points (user_id, points, reason) VALUES (${req.body.user_id}, ${req.body.points}, \'${req.body.reason}\')`)
+  return new Promise((resolve, reject) => {
+    db.query(`INSERT INTO points (user_id, points, reason) VALUES (${req.body.user_id}, ${req.body.points}, \'${req.body.reason}\')`,
+    (err, teams) => {
+      if(err) reject(err);
+      resolve(teams);
+    });
+  })
+  .then((data) => {
+    res.send()
+  });
+}
+
+module.exports.getUsers = function(req, res) {
+  return new Promise((resolve, reject) => {
+    db.query(`SELECT id, name FROM user`, 
+    (err, teams) => {
+      if(err) reject(err);
+      resolve(teams);
+    });
+  })
+  .then((data) => {
+    res.send(data);
   })
 }

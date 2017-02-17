@@ -36,7 +36,12 @@ app.use(bodyParser.json());
 //server static files from dist folder
 app.use(express.static(path.join(__dirname, '../dist')));
 
+//API routes
 app.get('/scores', handler.getScore);
+
+app.get('/users', handler.getUsers);
+
+app.post('/addPoints', handler.addPoints);
 
 //launch app
 app.listen(port, () => console.log('App listening on ', port));
