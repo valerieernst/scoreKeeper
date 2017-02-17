@@ -6,8 +6,8 @@ import GivePoints from './givePoints.jsx'
 export default class App extends Component {
   constructor(props) {
     super(props);
+    this.getScores = this.getScores.bind(this);
 
-    // this.givePoints = this.givePoints.bind(this);
 
     this.state ={
       scoreData: {}
@@ -20,7 +20,7 @@ export default class App extends Component {
   }
 
   getScores () {
-    console.log('getting scores!')
+    console.log('getting scores')
     //make http request to server
     axios.get('/scores')
     .then((data) => {

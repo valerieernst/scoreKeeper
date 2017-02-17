@@ -36,7 +36,23 @@ export default class GivePoints extends Component {
     })
   }
 
-  givePoints () {
+  givePoints (e) {
+    console.log(this.state)
+    e.preventDefault();
+    axios.post('/addPoints', {
+      user_id: this.state.user,
+      points: this.state.points,
+      reason: this.state.reason
+    })
+    .then((response) => {
+      this.props.onSubmit();
+      this.setState({
+        points: '',
+        user: '',
+        reason: ''
+      })
+    })
+
   }
 
   render () {
@@ -62,6 +78,7 @@ export default class GivePoints extends Component {
             placeholder="select"
             value={this.state.user} 
             onChange={this.changeHandler}>
+              <option key="blank" value="blank">Select A Player</option>
             {this.state.userList.map((user) => {
               return <option key={user.id} value={user.id}>{user.name}</option>
             })}
