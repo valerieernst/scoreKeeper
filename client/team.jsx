@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 const team = ({ teamName, points }) => (
   <div className="team">
