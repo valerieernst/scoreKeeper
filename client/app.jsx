@@ -7,6 +7,8 @@ export default class App extends Component {
   constructor(props) {
     super(props);
 
+    // this.givePoints = this.givePoints.bind(this);
+
     this.state ={
       scoreData: {}
     }
@@ -18,6 +20,7 @@ export default class App extends Component {
   }
 
   getScores () {
+    console.log('getting scores!')
     //make http request to server
     axios.get('/scores')
     .then((data) => {
@@ -31,11 +34,12 @@ export default class App extends Component {
     })
   }
 
+
   render () {
     return (
       <div>
         <Leaderboard scoreData={this.state.scoreData}/>
-        <GivePoints />
+        <GivePoints onSubmit={this.getScores}/>
       </div>
     )
   }
