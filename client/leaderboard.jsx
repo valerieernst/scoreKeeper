@@ -7,20 +7,24 @@ export default class Leaderboard extends Component {
   constructor(props) {
     super(props);
 
+    //must bind this context
     this.getScores = this.getScores.bind(this);
 
     this.state = {
-      teamData: []
+      teamData: {}
     };
   }
 
   componentWillMount () {
+    //get score data before component mounts
     this.getScores();
   }
 
   getScores () {
+    //make http request to server
     axios.get('/scores')
     .then((data) => {
+      //store score data to component state
       this.setState({
         teamData: data.data
       });
@@ -32,6 +36,7 @@ export default class Leaderboard extends Component {
 
 
   render () {
+    //iterate through scores object and render each team to screen
     return (
     <div className="leaderboard container"> 
       {Object.keys(this.state.teamData).map((teamName) => (
