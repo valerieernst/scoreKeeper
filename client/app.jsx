@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Leaderboard from './leaderboard.jsx'
-import GivePoints from './givePoints.jsx'
+import { Row, Col } from 'react-bootstrap';
+import Leaderboard from './leaderboard.jsx';
+import GivePoints from './givePoints.jsx';
+import NavBar from './navbar.jsx';
 
 export default class App extends Component {
   constructor(props) {
@@ -20,7 +22,6 @@ export default class App extends Component {
   }
 
   getScores () {
-    console.log('getting scores')
     //make http request to server
     axios.get('/scores')
     .then((data) => {
@@ -38,8 +39,15 @@ export default class App extends Component {
   render () {
     return (
       <div>
-        <Leaderboard scoreData={this.state.scoreData}/>
-        <GivePoints onSubmit={this.getScores}/>
+        <NavBar />
+        <Row className="main_app">
+          <Col md={7} sm={12}>
+            <Leaderboard scoreData={this.state.scoreData}/>
+          </Col>
+          <Col md={5} sm={11}>
+            <GivePoints onSubmit={this.getScores}/>
+          </Col>
+        </Row>
       </div>
     )
   }

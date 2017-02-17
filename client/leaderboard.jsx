@@ -6,7 +6,7 @@ import Team from './team.jsx';
 const leaderboard = ({ scoreData }) => {
   //iterate through scores object for app component and render each team to screen
   return (
-    <div className="leaderboard container"> 
+    <div className="leaderboard"> 
       {Object.keys(scoreData).map((teamName) => (
         <Team key={teamName} teamName={teamName} points={scoreData[teamName]} />
       ))}
