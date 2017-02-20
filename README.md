@@ -1,2 +1,2 @@
 # scoreKeeper
-To start: run npm start in the main directory
+To start: run npm install, then npm start
