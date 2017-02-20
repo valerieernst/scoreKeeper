@@ -5,11 +5,12 @@ import Leaderboard from './leaderboard.jsx';
 import GivePoints from './givePoints.jsx';
 import NavBar from './navbar.jsx';
 
+
 export default class App extends Component {
+
   constructor(props) {
     super(props);
     this.getScores = this.getScores.bind(this);
-
 
     this.state ={
       scoreData: {}
@@ -21,6 +22,7 @@ export default class App extends Component {
     this.getScores();
   }
 
+//get scores from database -- called on app component mount and when points given
   getScores () {
     //make http request to server
     axios.get('/scores')
@@ -35,7 +37,7 @@ export default class App extends Component {
     })
   }
 
-
+//render all components of app
   render () {
     return (
       <div>
