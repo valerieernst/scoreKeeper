@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, NavItem} from 'react-bootstrap';
 
+//Create very basic navbar using bootstrap for aesthectics
 const navbar = () => {
   return (
     <Navbar inverse>

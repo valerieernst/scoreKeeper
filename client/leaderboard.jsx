@@ -4,7 +4,7 @@ import Team from './team.jsx';
 
 
 const leaderboard = ({ scoreData }) => {
-  //iterate through scores object for app component and render each team to screen
+  //iterate through scores object from app component and render each team to screen
   return (
     <div className="leaderboard"> 
       <h1>Here are the standings:</h1>

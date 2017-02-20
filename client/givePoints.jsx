@@ -5,6 +5,8 @@ import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 export default class GivePoints extends Component {
   constructor(props) {
     super(props);
+
+    //bind this context
     this.givePoints = this.givePoints.bind(this);
     this.changeHandler = this.changeHandler.bind(this);
 
@@ -20,6 +22,7 @@ export default class GivePoints extends Component {
     this.getUsers();
   }
 
+//make changes to state when user fills out form
   changeHandler (e) {
     const key = e.target.id
     this.setState({
@@ -27,6 +30,7 @@ export default class GivePoints extends Component {
     })
   }
 
+//gets users to populate give points list -- called on component will mount
   getUsers () {
     axios.get('/users')
     .then((users) => {
@@ -36,7 +40,9 @@ export default class GivePoints extends Component {
     })
   }
 
+//adds points to database and refreshes points board on success via getPoints on app.jsx
   givePoints (e) {
+    //don't refresh page to prevent re-rendering all components
     e.preventDefault();
     axios.post('/addPoints', {
       user_id: this.state.user,
@@ -44,7 +50,9 @@ export default class GivePoints extends Component {
       reason: this.state.reason
     })
     .then((response) => {
+      //get scores - this allows us to update scores while only rerendering one component
       this.props.onSubmit();
+      //clear input fields
       this.setState({
         points: '',
         user: '',
@@ -54,6 +62,7 @@ export default class GivePoints extends Component {
 
   }
 
+//form uses changeHandler function above to log inputs to state
   render () {
     return(
       <div className="give_points">
@@ -95,7 +104,7 @@ export default class GivePoints extends Component {
             onChange={this.changeHandler} 
           />
         </FormGroup>
-
+        
         <Button type="submit" onClick={this.givePoints}>
           Submit
         </Button>
