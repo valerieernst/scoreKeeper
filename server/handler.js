@@ -10,6 +10,7 @@ const db = mysql.createConnection({
 
 db.connect(err => err ? console.error(err) : console.log('DB Connection success!'));
 
+//Used two inner join tables to get all scores by team. Returns an array of teams including name and points
 function getAllTeamScores() {
   return new Promise((resolve, reject) => {
     db.query(`SELECT * FROM user INNER JOIN team ON team.id = user.team_id INNER JOIN points ON user.id = points.user_id`, 
@@ -38,8 +39,9 @@ module.exports.getScore = function(req, res) {
   })
 }
 
+//Called by user when adding points to a user from the form on the front end
+//requires user_id, points, and reason
 module.exports.addPoints = function (req, res) {
-  console.log(`INSERT INTO points (user_id, points, reason) VALUES (${req.body.user_id}, ${req.body.points}, \'${req.body.reason}\')`)
   return new Promise((resolve, reject) => {
     db.query(`INSERT INTO points (user_id, points, reason) VALUES (${req.body.user_id}, ${req.body.points}, \'${req.body.reason}\')`,
     (err, teams) => {
@@ -52,6 +54,7 @@ module.exports.addPoints = function (req, res) {
   });
 }
 
+//called when give points component mounts - returns all users from the user table
 module.exports.getUsers = function(req, res) {
   return new Promise((resolve, reject) => {
     db.query(`SELECT id, name FROM user`, 
